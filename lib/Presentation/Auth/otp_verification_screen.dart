@@ -23,7 +23,10 @@ class OtpVerificationScreen extends StatelessWidget {
       body: BlocConsumer<AuthBloc, AuthState>(
         listener: (context, state) {
           if (state.isVerified && state.isLoggedIn) {
-            Navigator.pushReplacementNamed(context, AppRoutes.inbox);
+            Navigator.of(context).pushNamedAndRemoveUntil(
+              AppRoutes.inbox,
+              (Route<dynamic> route) => false,
+            );
           }
 
           if (state.isError && state.errorMessage != null) {

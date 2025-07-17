@@ -40,7 +40,10 @@ class InboxScreen extends StatelessWidget {
       body: BlocListener<AuthBloc, AuthState>(
         listener: (context, state) {
           if (!state.isLoggedIn) {
-            Navigator.of(context).pushReplacementNamed(AppRoutes.login);
+            Navigator.of(context).pushNamedAndRemoveUntil(
+              AppRoutes.login,
+              (Route<dynamic> route) => false,
+            );
           }
         },
         child: BlocBuilder<InboxBloc, InboxState>(
