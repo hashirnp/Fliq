@@ -65,20 +65,15 @@ class Inboxepository extends InboxService {
     required String contactId,
   }) async {
     try {
+      //for token
       final jwtPrefs = JwtPrefsHelper();
+
+      //for user id
       final prefs = SharedPrefsHelper();
 
-      //face an issue on api endpoints,
-
-      //comment below line when checking, if api isn't working fine
       final url = Uri.parse(
         '${ApiConstants.baseUrl}${ApiConstants.chatBW}/$contactId/${prefs.getUserId()}',
       );
-
-      // remove comment of below lines
-      // final url = Uri.parse(
-      //   '${ApiConstants.baseUrl}${ApiConstants.chatBW}/106/189}',
-      // );
 
       final token = jwtPrefs.getJwtToken();
 

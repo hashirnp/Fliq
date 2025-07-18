@@ -132,24 +132,28 @@ class InboxScreen extends StatelessWidget {
                     ),
 
                     Container(
-                      padding: const EdgeInsets.all(12),
+                      padding: const EdgeInsets.all(10),
                       child: ListView.separated(
                         itemCount: contacts!.length,
                         shrinkWrap: true,
                         physics: const BouncingScrollPhysics(),
                         itemBuilder: (context, index) {
                           final item = contacts[index];
-                          return GestureDetector(
+                          return InkWell(
+                            highlightColor: Colors.brown[50],
                             onTap: () => Navigator.pushNamed(
                               context,
                               AppRoutes.chat,
                               arguments: {
-                                'contactId': item.authUserId!,
+                                'contactId': item.id!,
                                 'contact': item,
                               },
                             ),
                             child: Container(
+                              // color: Colors.transparent,
+                              width: double.infinity,
                               margin: const EdgeInsets.only(bottom: 10),
+                              padding: const EdgeInsets.all(2),
                               alignment: Alignment.center,
                               child: Row(
                                 mainAxisAlignment:

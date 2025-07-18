@@ -7,7 +7,7 @@ import 'package:intl/intl.dart';
 class ChatScreen extends StatelessWidget {
   const ChatScreen({super.key, required this.contactId, required this.contact});
 
-  final int contactId;
+  final String contactId;
   final Contact contact;
 
   @override
